@@ -1,22 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { ScrollView, StatusBar, StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import Background from './components/Backgound';
+import { colors } from './style-guide';
 
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+// TODO Persist => Async-Storage https://react-native-async-storage.github.io/async-storage/docs/install/
 
 export default function App() {
-  const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
-
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
-    );
-  }
+  return (
+    <Provider store={store}>
+      <ScrollView style={styles.app}>
+        <StatusBar
+          barStyle='dark-content'
+          backgroundColor={colors.lightTheme.bgColor}
+        />
+        <Background />
+      </ScrollView>
+    </Provider>
+  );
 }
+
+const styles = StyleSheet.create({
+  app: {
+    flex: 1,
+    backgroundColor: `${colors.lightTheme.bgColor}`,
+    color: `${colors.darkTheme.textColor}`,
+  },
+});
