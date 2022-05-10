@@ -25,13 +25,22 @@ export type State = {
 
 const initialState: State = {
   tasks: [
-    "Complete online JavaScript course",
-    "Jog around the park 3x",
-    "10 minutes meditation",
-    "Read for 1 hour",
-    "Pick up groceries",
-    "Complete Todo App on Frontend Mentor",
-  ].map((task) => ({ name: task, id: uuidv4(), completed: false })),
+    {
+      name: "Complete online JavaScript course",
+      id: uuidv4(),
+      completed: false
+    },
+    {
+      name: "Complete Frontend Mentor React Native Todo App",
+      id: uuidv4(),
+      completed: false
+    },
+    {
+      name: "Read for 1 hour",
+      id: uuidv4(),
+      completed: false
+    }
+  ],
   activeFilter: "all",
   theme: "lightTheme"
 };
