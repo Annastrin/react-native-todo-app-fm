@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
     height: 50,
     borderWidth: 0,
     borderRadius: 5,
-    padding: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     backgroundColor: `${colors.lightTheme.taskBgColor}`,
   },
 });
