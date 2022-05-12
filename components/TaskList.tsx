@@ -36,8 +36,9 @@ export function TaskList(props: TaskListProps) {
     completed: (task: StateTask) => task.completed,
   };
 
+  const lastItemIndex = props.tasks.length - 1;
   const renderItem = (
-    { item }: any //FIXME type any
+    { item, index }: any //FIXME type any
   ) => (
     <Task
       taskName={item.name}
@@ -45,6 +46,7 @@ export function TaskList(props: TaskListProps) {
       completed={item.completed}
       onToggleTaskState={props.onToggleTaskState}
       onRemoveTask={props.onRemoveTask}
+      lastItem={index === lastItemIndex}
     />
   );
 

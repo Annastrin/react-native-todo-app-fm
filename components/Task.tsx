@@ -13,6 +13,7 @@ export interface TaskProps extends TaskCallbacks {
   taskName: string;
   taskId: string;
   completed: boolean;
+  lastItem: boolean;
 }
 
 export function Task(props: TaskProps) {
@@ -25,7 +26,7 @@ export function Task(props: TaskProps) {
   };
 
   return (
-    <View style={styles.task}>
+    <View style={[styles.task, props.lastItem && styles.lastTask]}>
       <Pressable onPress={handleStateSwitch} style={styles.checkbox}>
         <Checkbox checked={props.completed} />
       </Pressable>
@@ -70,6 +71,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: `${colors.lightTheme.taskBorder};`,
+  },
+  lastTask: {
+    borderBottomWidth: 0,
   },
   taskCompleted: {
     textDecorationLine: 'line-through',
