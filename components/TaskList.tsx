@@ -1,34 +1,21 @@
 import { View, FlatList, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
-import {
-  removeTask,
-  toggleTaskState,
-  showAllTasks,
-  showActiveTasks,
-  showCompletedTasks,
-  clearCompletedTasks,
-} from '../redux/actions';
-import { Task, TaskCallbacks } from './Task';
-//import { TaskFilters, TaskFiltersCallbacks } from "../TaskFilters";
+import { useSelector } from 'react-redux';
+import { Task } from './Task';
 import { State, StateTask } from '../redux/reducers';
-import { AppDispatch } from '../redux/store';
+import useTheme from '../hooks/useTheme';
 import { colors } from '../style-guide';
 
 /*
 export interface TaskListProps
-  extends Pick<State, "tasks" | "activeFilter">,
-    TaskCallbacks,
-    TaskFiltersCallbacks { }
+  extends Pick<State, "tasks" | "activeFilter">
 */
 
-export interface TaskListProps
-  extends Pick<State, 'tasks' | 'activeFilter'>,
-    TaskCallbacks {}
+export default function TaskList() {
+  const tasks = useSelector((state: State) => state.tasks);
+  const activeFilter = useSelector((state: State) => state.activeFilter);
+  const theme = useTheme();
 
-export function TaskList(props: TaskListProps) {
-  const activeTasksNumber = props.tasks.filter(
-    (task) => !task.completed
-  ).length;
+  const activeTasksNumber = tasks.filter((task) => !task.completed).length;
 
   const filterMap = {
     all: () => true,
@@ -36,30 +23,28 @@ export function TaskList(props: TaskListProps) {
     completed: (task: StateTask) => task.completed,
   };
 
-  const lastItemIndex = props.tasks.length - 1;
-  const renderItem = (
-    { item, index }: any //FIXME type any
-  ) => (
+  const lastItemIndex = tasks.length - 1;
+  const renderItem = ({ item, index }: { item: StateTask; index: number }) => (
     <Task
       taskName={item.name}
       taskId={item.id}
       completed={item.completed}
-      onToggleTaskState={props.onToggleTaskState}
-      onRemoveTask={props.onRemoveTask}
       lastItem={index === lastItemIndex}
     />
   );
 
   return (
-    <View style={styles.taskList}>
-      {props.tasks.filter(filterMap[props.activeFilter]).length !== 0 && (
+    <View
+      style={[styles.taskList, theme === 'darkTheme' && styles.taskListDark]}
+    >
+      {tasks.filter(filterMap[activeFilter]).length !== 0 && (
         <FlatList
-          data={props.tasks.filter(filterMap[props.activeFilter])}
+          data={tasks.filter(filterMap[activeFilter])}
           renderItem={renderItem}
           keyExtractor={(task) => task.id}
         />
       )}
-      {/* {props.tasks.length > 0 && (
+      {/*props.tasks.length > 0 && (
         <TaskFilters
           activeFilter={props.activeFilter}
           tasksNumber={activeTasksNumber}
@@ -68,39 +53,9 @@ export function TaskList(props: TaskListProps) {
           onShowCompleted={props.onShowCompleted}
           onClearCompleted={props.onClearCompleted}
         />
-      )} */}
+      )*/}
     </View>
   );
-}
-
-function mapStateToProps(state: State): Pick<State, 'tasks' | 'activeFilter'> {
-  return {
-    tasks: state.tasks,
-    activeFilter: state.activeFilter,
-  };
-}
-
-function mapDispatchToProps(dispatch: AppDispatch) {
-  return {
-    onRemoveTask: (id: string) => {
-      dispatch(removeTask(id));
-    },
-    onToggleTaskState: (id: string, taskState: boolean) => {
-      dispatch(toggleTaskState(id, taskState));
-    },
-    onShowAll: () => {
-      dispatch(showAllTasks());
-    },
-    onShowActive: () => {
-      dispatch(showActiveTasks());
-    },
-    onShowCompleted: () => {
-      dispatch(showCompletedTasks());
-    },
-    onClearCompleted: () => {
-      dispatch(clearCompletedTasks());
-    },
-  };
 }
 
 const styles = StyleSheet.create({
@@ -108,8 +63,12 @@ const styles = StyleSheet.create({
     marginTop: -30,
     marginHorizontal: 24,
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: `${colors.lightTheme.taskListBorder}`,
     backgroundColor: `${colors.lightTheme.taskBgColor}`,
   },
+  taskListDark: {
+    borderColor: `${colors.darkTheme.taskListBorder}`,
+    backgroundColor: `${colors.darkTheme.taskBgColor}`,
+  },
 });
-
-export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
