@@ -2,10 +2,9 @@ const paleteColors = {
   // Primary Colors
   white: 'hsl(0, 0%, 100%)',
   brightBlue: 'hsl(220, 98%, 61%)',
-  bluePurpleGradient: 'linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))',
   // Light Theme Colors
   veryLightGray: 'hsl(0, 0%, 98%)',
-  veryLightGrayishBlue: 'hsl(236, 33%, 92%)',
+  veryLightGrayishBlue: 'hsl(0, 0%, 87%)',
   lightGrayishBlue: 'hsl(233, 11%, 84%)',
   darkGrayishBlue: 'hsl(236, 9%, 61%)',
   veryDarkGrayishBlue: 'hsl(235, 19%, 35%)',
@@ -24,7 +23,6 @@ export const colors = {
   logoColor: paleteColors.white,
   activeFilterColor: paleteColors.brightBlue,
   caretColor: paleteColors.brightBlue,
-  checkBgColor: paleteColors.bluePurpleGradient,
   //Light Theme colors
   lightTheme: {
     textColor: paleteColors.veryDarkGrayishBlue,
@@ -32,7 +30,7 @@ export const colors = {
     taskBgColor: paleteColors.white,
     taskBorder: paleteColors.veryLightGrayishBlue,
     checkboxBorder: paleteColors.veryLightGrayishBlue,
-    boxShadowColor: paleteColors.veryLightGrayishBlue,
+    taskListBorder: paleteColors.veryLightGrayishBlue,
     completedTaskTextColor: paleteColors.lightGrayishBlue,
     filtersTextColor: paleteColors.darkGrayishBlue,
     filtersBgColor: paleteColors.white
@@ -44,7 +42,7 @@ export const colors = {
     taskBgColor: paleteColors.veryDarkDesaturatedBlue,
     taskBorder: paleteColors.veryDarkGrayishBlue3,
     checkboxBorder: paleteColors.veryDarkGrayishBlue3,
-    boxShadowColor: paleteColors.black,
+    taskListBorder: paleteColors.black,
     completedTaskTextColor: paleteColors.veryDarkGrayishBlue2,
     filtersTextColor: paleteColors.veryDarkGrayishBlue2,
     filtersBgColor: paleteColors.veryDarkDesaturatedBlue
