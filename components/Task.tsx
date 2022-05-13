@@ -1,15 +1,13 @@
 import { View, Pressable, Text, StyleSheet } from 'react-native';
 import { memo } from 'react';
+import { useDispatch } from 'react-redux';
+import useTheme from '../hooks/useTheme';
 import Checkbox from './Icons/Checkbox';
 import RemoveTask from './Icons/RemoveTask';
 import { colors } from '../style-guide';
+import { removeTask, toggleTaskState } from '../redux/actions';
 
-export interface TaskCallbacks {
-  onRemoveTask: (id: string) => void;
-  onToggleTaskState: (id: string, taskState: boolean) => void;
-}
-
-export interface TaskProps extends TaskCallbacks {
+export interface TaskProps {
   taskName: string;
   taskId: string;
   completed: boolean;
@@ -17,25 +15,35 @@ export interface TaskProps extends TaskCallbacks {
 }
 
 export function Task(props: TaskProps) {
+  const dispatch = useDispatch();
+  const theme = useTheme();
+
   const handleRemove = () => {
-    props.onRemoveTask(props.taskId);
+    dispatch(removeTask(props.taskId));
   };
 
   const handleStateSwitch = () => {
-    props.onToggleTaskState(props.taskId, !props.completed);
+    dispatch(toggleTaskState(props.taskId, !props.completed));
   };
 
   return (
-    <View style={[styles.task, props.lastItem && styles.lastTask]}>
+    <View
+      style={[
+        styles.task,
+        theme === 'darkTheme' && styles.taskDark,
+        props.lastItem && styles.lastTask,
+      ]}
+    >
       <Pressable onPress={handleStateSwitch} style={styles.checkbox}>
         <Checkbox checked={props.completed} />
       </Pressable>
       <Text
-        style={
-          props.completed
-            ? [styles.taskContent, styles.taskCompleted]
-            : styles.taskContent
-        }
+        style={[
+          styles.taskContent,
+          theme === 'darkTheme' && styles.taskContentDark,
+          props.completed && styles.taskCompleted,
+          theme === 'darkTheme' && props.completed && styles.taskCompletedDark,
+        ]}
         numberOfLines={1}
         ellipsizeMode='tail'
       >
@@ -47,10 +55,6 @@ export function Task(props: TaskProps) {
     </View>
   );
 }
-
-export const nameWithId = (name: string, id: string) => {
-  return name.toLowerCase().split(' ').join('-') + '-' + id;
-};
 
 const styles = StyleSheet.create({
   checkbox: {
@@ -72,6 +76,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: `${colors.lightTheme.taskBorder};`,
   },
+  taskDark: {
+    borderBottomColor: `${colors.darkTheme.taskBorder};`,
+  },
   lastTask: {
     borderBottomWidth: 0,
   },
@@ -79,18 +86,24 @@ const styles = StyleSheet.create({
     textDecorationLine: 'line-through',
     color: `${colors.lightTheme.completedTaskTextColor}`,
   },
+  taskCompletedDark: {
+    color: `${colors.darkTheme.completedTaskTextColor}`,
+  },
   taskContent: {
     flexGrow: 1,
     flexShrink: 0,
     flexBasis: '80%',
     color: `${colors.lightTheme.textColor}`,
   },
+  taskContentDark: {
+    color: `${colors.darkTheme.textColor}`,
+  },
   removeButton: {
     flexGrow: 0,
     flexShrink: 1,
     flexBasis: 'auto',
-    width: 18,
-    height: 18,
+    width: 16,
+    height: 16,
     marginLeft: 20,
   },
 });
