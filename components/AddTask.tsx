@@ -25,6 +25,7 @@ export default function AddTask() {
       blurOnSubmit={true}
       value={text}
       placeholder='Create a new todo...'
+      placeholderTextColor={`${colors[theme].addTaskFieldColor}`}
     />
   );
 }

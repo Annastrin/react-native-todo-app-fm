@@ -33,7 +33,8 @@ export const colors = {
     taskListBorder: paleteColors.veryLightGrayishBlue,
     completedTaskTextColor: paleteColors.lightGrayishBlue,
     filtersTextColor: paleteColors.darkGrayishBlue,
-    filtersBgColor: paleteColors.white
+    filtersBgColor: paleteColors.white,
+    addTaskFieldColor: paleteColors.darkGrayishBlue
   },
   //Dark Theme colors
   darkTheme: {
@@ -45,6 +46,7 @@ export const colors = {
     taskListBorder: paleteColors.black,
     completedTaskTextColor: paleteColors.veryDarkGrayishBlue2,
     filtersTextColor: paleteColors.veryDarkGrayishBlue2,
-    filtersBgColor: paleteColors.veryDarkDesaturatedBlue
+    filtersBgColor: paleteColors.veryDarkDesaturatedBlue,
+    addTaskFieldColor: paleteColors.darkGrayishBlue2
   }
 };
