@@ -1,12 +1,20 @@
 import { View, ImageBackground, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
+import { State } from '../redux/reducers';
+import useTheme from '../hooks/useTheme';
 import Header from './Header';
 import AddTask from './AddTask';
 
 export default function Background() {
+  const theme = useTheme();
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../assets/images/bg-mobile-light.jpg')}
+        source={
+          theme === 'lightTheme'
+            ? require('../assets/images/bg-mobile-light.jpg')
+            : require('../assets/images/bg-mobile-dark.jpg')
+        }
         style={styles.background}
       >
         <Header />
