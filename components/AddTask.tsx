@@ -1,27 +1,25 @@
 import { TextInput, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTask } from '../redux/actions';
-import { AppDispatch } from '../redux/store';
+import useTheme from '../hooks/useTheme';
 import { colors } from '../style-guide';
 
-export interface AddTaskProps {
-  onAddTask: (value: string) => void;
-}
-
-export function AddTask(props: AddTaskProps) {
+export default function AddTask() {
   const [text, onChangeText] = useState('');
+  const dispatch = useDispatch();
+  const theme = useTheme();
 
   const handleSubmit = () => {
     if (text.length > 0) {
-      props.onAddTask(text);
+      dispatch(addTask(text));
       onChangeText('');
     }
   };
 
   return (
     <TextInput
-      style={styles.input}
+      style={[styles.input, theme === 'darkTheme' && styles.inputDark]}
       onChangeText={onChangeText}
       onSubmitEditing={handleSubmit}
       blurOnSubmit={true}
@@ -39,15 +37,10 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: `${colors.lightTheme.taskBgColor}`,
+    color: `${colors.lightTheme.textColor}`,
+  },
+  inputDark: {
+    backgroundColor: `${colors.darkTheme.taskBgColor}`,
+    color: `${colors.darkTheme.textColor}`,
   },
 });
-
-function mapDispatchToProps(dispatch: AppDispatch) {
-  return {
-    onAddTask: (value: string) => {
-      dispatch(addTask(value));
-    },
-  };
-}
-
-export default connect(null, mapDispatchToProps)(AddTask);
