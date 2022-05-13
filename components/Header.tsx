@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { switchTheme } from '../redux/actions';
 import useTheme from '../hooks/useTheme';
 import ThemeSwitch from './Icons/ThemeSwitch';
+import { colors } from '../style-guide';
 
 export function Header() {
   const theme = useTheme();
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     letterSpacing: 10,
     textTransform: 'uppercase',
-    color: '#fff',
+    color: `${colors.logoColor}`,
   },
 });
 
