@@ -1,6 +1,4 @@
 import { View, ImageBackground, StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
-import { State } from '../redux/reducers';
 import useTheme from '../hooks/useTheme';
 import Header from './Header';
 import AddTask from './AddTask';
