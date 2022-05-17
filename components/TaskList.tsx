@@ -23,14 +23,8 @@ export default function TaskList() {
     completed: (task: StateTask) => task.completed,
   };
 
-  const lastItemIndex = tasks.length - 1;
-  const renderItem = ({ item, index }: { item: StateTask; index: number }) => (
-    <Task
-      taskName={item.name}
-      taskId={item.id}
-      completed={item.completed}
-      lastItem={index === lastItemIndex}
-    />
+  const renderItem = ({ item }: { item: StateTask }) => (
+    <Task taskName={item.name} taskId={item.id} completed={item.completed} />
   );
 
   return (
