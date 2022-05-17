@@ -3,12 +3,8 @@ import { useSelector } from 'react-redux';
 import { Task } from './Task';
 import { State, StateTask } from '../redux/reducers';
 import useTheme from '../hooks/useTheme';
+import { TaskFilters } from './TaskFilters';
 import { colors } from '../style-guide';
-
-/*
-export interface TaskListProps
-  extends Pick<State, "tasks" | "activeFilter">
-*/
 
 export default function TaskList() {
   const tasks = useSelector((state: State) => state.tasks);
@@ -28,41 +24,40 @@ export default function TaskList() {
   );
 
   return (
-    <View
-      style={[styles.taskList, theme === 'darkTheme' && styles.taskListDark]}
-    >
-      {tasks.filter(filterMap[activeFilter]).length !== 0 && (
-        <FlatList
-          data={tasks.filter(filterMap[activeFilter])}
-          renderItem={renderItem}
-          keyExtractor={(task) => task.id}
-        />
-      )}
-      {/*props.tasks.length > 0 && (
-        <TaskFilters
-          activeFilter={props.activeFilter}
-          tasksNumber={activeTasksNumber}
-          onShowAll={props.onShowAll}
-          onShowActive={props.onShowActive}
-          onShowCompleted={props.onShowCompleted}
-          onClearCompleted={props.onClearCompleted}
-        />
-      )*/}
+    <View style={styles.taskListContainer}>
+      <FlatList
+        data={tasks.filter(filterMap[activeFilter])}
+        renderItem={renderItem}
+        ListFooterComponent={
+          tasks.length > 0 ? (
+            <TaskFilters
+              activeFilter={activeFilter}
+              tasksNumber={activeTasksNumber}
+            />
+          ) : undefined
+        }
+        keyExtractor={(task) => task.id}
+        style={[styles.taskList, theme === 'darkTheme' && styles.taskListDark]}
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  taskList: {
+  taskListContainer: {
+    flex: 1,
+    justifyContent: 'flex-start',
     marginTop: -30,
+  },
+  taskList: {
+    flexGrow: 0,
+    flexBasis: 'auto',
+    marginBottom: 20,
     marginHorizontal: 24,
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: `${colors.lightTheme.taskListBorder}`,
-    backgroundColor: `${colors.lightTheme.taskBgColor}`,
+    backgroundColor: `${colors.lightTheme.bgColor}`,
   },
   taskListDark: {
-    borderColor: `${colors.darkTheme.taskListBorder}`,
     backgroundColor: `${colors.darkTheme.taskBgColor}`,
   },
 });
