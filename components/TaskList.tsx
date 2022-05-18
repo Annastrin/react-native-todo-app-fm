@@ -28,6 +28,8 @@ export default function TaskList() {
     />
   );
 
+  const filteredTasksNumber = tasks.filter(filterMap[activeFilter]).length;
+
   return (
     <View style={styles.taskListContainer}>
       <FlatList
@@ -38,6 +40,7 @@ export default function TaskList() {
             <TaskFilters
               activeFilter={activeFilter}
               tasksNumber={activeTasksNumber}
+              filteredTasksNumber={filteredTasksNumber}
             />
           ) : undefined
         }
@@ -53,6 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     marginTop: -30,
+    borderRadius: 5,
   },
   taskList: {
     flexGrow: 0,

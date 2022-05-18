@@ -13,6 +13,7 @@ import { colors } from '../style-guide';
 export interface TaskFiltersProps {
   activeFilter: State['activeFilter'];
   tasksNumber: number;
+  filteredTasksNumber: number;
 }
 
 export function TaskFilters(props: TaskFiltersProps) {
@@ -36,12 +37,17 @@ export function TaskFilters(props: TaskFiltersProps) {
 
   return (
     <View
-      style={[styles.controls, theme === 'darkTheme' && styles.controlsDark]}
+      style={[
+        styles.controls,
+        theme === 'darkTheme' && styles.controlsDark,
+        props.filteredTasksNumber === 0 && styles.controlsWithoutTasks,
+      ]}
     >
       <View
         style={[
           styles.statsAndClear,
           theme === 'darkTheme' && styles.statsAndClearDark,
+          props.filteredTasksNumber === 0 && styles.statsAndClearWithoutTasks,
         ]}
       >
         <Text ellipsizeMode='tail' numberOfLines={1} style={styles.leftItems}>
@@ -97,6 +103,9 @@ const styles = StyleSheet.create({
     minHeight: 50,
     backgroundColor: `${colors.lightTheme.bgColor}`,
   },
+  controlsWithoutTasks: {
+    borderRadius: 5,
+  },
   controlsDark: {
     backgroundColor: `${colors.darkTheme.bgColor}`,
   },
@@ -125,6 +134,10 @@ const styles = StyleSheet.create({
     borderRightColor: `${colors.darkTheme.taskSideBorders}`,
     borderBottomColor: `${colors.darkTheme.taskSideBorders}`,
     backgroundColor: `${colors.darkTheme.filtersBgColor}`,
+  },
+  statsAndClearWithoutTasks: {
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
   },
   leftItems: {
     maxWidth: 105,
