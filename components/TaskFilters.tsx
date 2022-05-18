@@ -100,9 +100,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingBottom: 20,
     paddingTop: 23,
+    borderLeftWidth: 1,
+    borderLeftColor: `${colors.lightTheme.taskSideBorders}`,
+    borderRightWidth: 1,
+    borderRightColor: `${colors.lightTheme.taskSideBorders}`,
+    borderBottomWidth: 1,
+    borderBottomColor: `${colors.lightTheme.taskSideBorders}`,
     backgroundColor: `${colors.lightTheme.filtersBgColor}`,
   },
   statsAndClearDark: {
+    borderLeftColor: `${colors.darkTheme.taskSideBorders}`,
+    borderRightColor: `${colors.darkTheme.taskSideBorders}`,
+    borderBottomColor: `${colors.darkTheme.taskSideBorders}`,
     backgroundColor: `${colors.darkTheme.filtersBgColor}`,
   },
   leftItems: {
@@ -122,10 +131,12 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     paddingTop: 23,
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: `${colors.lightTheme.taskSideBorders}`,
     backgroundColor: `${colors.lightTheme.filtersBgColor}`,
   },
   filtersDark: {
-    borderColor: `${colors.darkTheme.taskListBorder}`,
+    borderColor: `${colors.darkTheme.taskSideBorders}`,
     backgroundColor: `${colors.darkTheme.filtersBgColor}`,
   },
   filterButton: {
