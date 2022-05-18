@@ -3,7 +3,7 @@ const paleteColors = {
   white: 'hsl(0, 0%, 100%)',
   brightBlue: 'hsl(220, 98%, 61%)',
   // Light Theme Colors
-  veryLightGray: 'hsl(260, 66%, 92%)',
+  veryLightGray: 'hsl(0, 0%, 96%)',
   veryLightGrayishBlue: 'hsl(0, 0%, 87%)',
   lightGrayishBlue: 'hsl(233, 11%, 84%)',
   darkGrayishBlue: 'hsl(236, 9%, 61%)',
