@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux/store';
 import Screen from './components/Screen';
 import Background from './components/Backgound';
 import TaskList from './components/TaskList';
@@ -9,10 +10,12 @@ import TaskList from './components/TaskList';
 export default function App() {
   return (
     <Provider store={store}>
-      <Screen>
-        <Background />
-        <TaskList />
-      </Screen>
+      <PersistGate loading={null} persistor={persistor}>
+        <Screen>
+          <Background />
+          <TaskList />
+        </Screen>
+      </PersistGate>
     </Provider>
   );
 }
