@@ -1,6 +1,7 @@
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import {
+  clearCompletedTasks,
   showActiveTasks,
   showAllTasks,
   showCompletedTasks,
@@ -29,6 +30,10 @@ export function TaskFilters(props: TaskFiltersProps) {
     dispatch(showCompletedTasks());
   };
 
+  const clearCompleted = () => {
+    dispatch(clearCompletedTasks());
+  };
+
   return (
     <View
       style={[styles.controls, theme === 'darkTheme' && styles.controlsDark]}
@@ -44,7 +49,9 @@ export function TaskFilters(props: TaskFiltersProps) {
             ? `${props.tasksNumber} item left`
             : `${props.tasksNumber} items left`}
         </Text>
-        <Pressable></Pressable>
+        <Pressable onPress={clearCompleted}>
+          <Text style={styles.clearCompletedButton}>Clear Completed</Text>
+        </Pressable>
       </View>
 
       <View
@@ -94,6 +101,11 @@ const styles = StyleSheet.create({
     backgroundColor: `${colors.darkTheme.bgColor}`,
   },
   statsAndClear: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 60,
     marginBottom: 15,
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
@@ -118,6 +130,13 @@ const styles = StyleSheet.create({
     maxWidth: 105,
     overflow: 'hidden',
     color: `${colors.lightTheme.filtersTextColor}`,
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  clearCompletedButton: {
+    color: `${colors.lightTheme.filtersTextColor}`,
+    fontSize: 12,
+    fontWeight: '600',
   },
   filters: {
     flexGrow: 0,
@@ -126,7 +145,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: 50,
+    height: 60,
     paddingHorizontal: 20,
     paddingBottom: 20,
     paddingTop: 23,
