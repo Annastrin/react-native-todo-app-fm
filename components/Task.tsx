@@ -11,6 +11,7 @@ export interface TaskProps {
   taskName: string;
   taskId: string;
   completed: boolean;
+  firstItem: boolean;
 }
 
 export function Task(props: TaskProps) {
@@ -26,7 +27,13 @@ export function Task(props: TaskProps) {
   };
 
   return (
-    <View style={[styles.task, theme === 'darkTheme' && styles.taskDark]}>
+    <View
+      style={[
+        styles.task,
+        theme === 'darkTheme' && styles.taskDark,
+        props.firstItem && styles.firstTask,
+      ]}
+    >
       <Pressable onPress={handleStateSwitch} style={styles.checkbox}>
         <Checkbox checked={props.completed} />
       </Pressable>
@@ -80,6 +87,10 @@ const styles = StyleSheet.create({
     borderBottomColor: `${colors.darkTheme.taskBorder}`,
     backgroundColor: `${colors.darkTheme.taskBgColor}`,
   },
+  firstTask: {
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+  },
   lastTask: {
     borderBottomWidth: 0,
   },
@@ -94,6 +105,8 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexShrink: 0,
     flexBasis: '80%',
+    height: 26,
+    lineHeight: 26,
     color: `${colors.lightTheme.textColor}`,
   },
   taskContentDark: {
