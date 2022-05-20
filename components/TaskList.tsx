@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   taskListContainer: {
     flex: 1,
     justifyContent: 'flex-start',
-    marginTop: -30,
+    marginTop: 20,
     borderRadius: 5,
   },
   taskList: {
@@ -64,9 +64,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginHorizontal: 24,
     borderRadius: 5,
+    borderTopWidth: 1,
+    borderTopColor: `${colors.lightTheme.taskSideBorders}`,
     backgroundColor: `${colors.lightTheme.bgColor}`,
   },
   taskListDark: {
+    borderTopColor: `${colors.darkTheme.taskSideBorders}`,
     backgroundColor: `${colors.darkTheme.taskBgColor}`,
   },
 });

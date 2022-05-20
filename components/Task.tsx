@@ -57,14 +57,6 @@ export function Task(props: TaskProps) {
 }
 
 const styles = StyleSheet.create({
-  checkbox: {
-    flexGrow: 0,
-    flexShrink: 1,
-    flexBasis: 'auto',
-    width: 26,
-    height: 26,
-    marginRight: 10,
-  },
   task: {
     flex: 1,
     flexDirection: 'row',
@@ -72,7 +64,7 @@ const styles = StyleSheet.create({
     minHeight: 60,
     maxHeight: 60,
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     borderBottomWidth: 1,
     borderBottomColor: `${colors.lightTheme.taskBorder}`,
     borderLeftWidth: 1,
@@ -91,8 +83,14 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
   },
-  lastTask: {
-    borderBottomWidth: 0,
+  checkbox: {
+    flexGrow: 0,
+    flexShrink: 0,
+    flexBasis: 'auto',
+    width: 31,
+    height: 31,
+    marginRight: 5,
+    paddingHorizontal: 5,
   },
   taskCompleted: {
     textDecorationLine: 'line-through',
@@ -104,7 +102,8 @@ const styles = StyleSheet.create({
   taskContent: {
     flexGrow: 1,
     flexShrink: 0,
-    flexBasis: '80%',
+    flexBasis: 'auto',
+    width: 100,
     height: 26,
     lineHeight: 26,
     color: `${colors.lightTheme.textColor}`,
@@ -116,9 +115,10 @@ const styles = StyleSheet.create({
     flexGrow: 0,
     flexShrink: 1,
     flexBasis: 'auto',
-    width: 16,
-    height: 16,
-    marginLeft: 20,
+    width: 21,
+    height: 21,
+    marginLeft: 15,
+    paddingHorizontal: 5,
   },
 });
 
