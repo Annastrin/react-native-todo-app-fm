@@ -172,8 +172,9 @@ const styles = StyleSheet.create({
     backgroundColor: `${colors.darkTheme.filtersBgColor}`,
   },
   filterButton: {
-    marginHorizontal: 10,
+    marginHorizontal: 5,
     minHeight: 14,
+    paddingHorizontal: 5,
   },
   filterText: {
     fontSize: 14,

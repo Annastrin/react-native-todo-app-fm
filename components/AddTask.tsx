@@ -32,7 +32,7 @@ export default function AddTask() {
 
 const styles = StyleSheet.create({
   input: {
-    height: 50,
+    height: 60,
     borderWidth: 0,
     borderRadius: 5,
     paddingVertical: 10,
