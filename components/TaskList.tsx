@@ -64,8 +64,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginHorizontal: 24,
     borderRadius: 5,
-    borderTopWidth: 1,
-    borderTopColor: `${colors.lightTheme.taskSideBorders}`,
     backgroundColor: `${colors.lightTheme.bgColor}`,
   },
   taskListDark: {

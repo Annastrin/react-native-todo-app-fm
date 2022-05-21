@@ -30,8 +30,8 @@ export function Task(props: TaskProps) {
     <View
       style={[
         styles.task,
-        theme === 'darkTheme' && styles.taskDark,
         props.firstItem && styles.firstTask,
+        theme === 'darkTheme' && styles.taskDark,
       ]}
     >
       <Pressable onPress={handleStateSwitch} style={styles.checkbox}>
@@ -77,11 +77,14 @@ const styles = StyleSheet.create({
     borderLeftColor: `${colors.darkTheme.taskSideBorders}`,
     borderRightColor: `${colors.darkTheme.taskSideBorders}`,
     borderBottomColor: `${colors.darkTheme.taskBorder}`,
+    borderTopColor: `${colors.darkTheme.taskSideBorders}`,
     backgroundColor: `${colors.darkTheme.taskBgColor}`,
   },
   firstTask: {
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
+    borderTopWidth: 1,
+    borderTopColor: `${colors.lightTheme.taskSideBorders}`,
   },
   checkbox: {
     flexGrow: 0,

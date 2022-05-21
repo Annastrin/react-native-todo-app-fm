@@ -46,8 +46,8 @@ export function TaskFilters(props: TaskFiltersProps) {
       <View
         style={[
           styles.statsAndClear,
-          theme === 'darkTheme' && styles.statsAndClearDark,
           props.filteredTasksNumber === 0 && styles.statsAndClearWithoutTasks,
+          theme === 'darkTheme' && styles.statsAndClearDark,
         ]}
       >
         <Text ellipsizeMode='tail' numberOfLines={1} style={styles.leftItems}>
@@ -133,11 +133,14 @@ const styles = StyleSheet.create({
     borderLeftColor: `${colors.darkTheme.taskSideBorders}`,
     borderRightColor: `${colors.darkTheme.taskSideBorders}`,
     borderBottomColor: `${colors.darkTheme.taskSideBorders}`,
+    borderTopColor: `${colors.darkTheme.taskSideBorders}`,
     backgroundColor: `${colors.darkTheme.filtersBgColor}`,
   },
   statsAndClearWithoutTasks: {
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
+    borderTopWidth: 1,
+    borderTopColor: `${colors.lightTheme.taskSideBorders}`,
   },
   leftItems: {
     maxWidth: 105,
@@ -158,7 +161,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 60,
+    marginBottom: 10,
     paddingHorizontal: 20,
     paddingBottom: 20,
     paddingTop: 23,
