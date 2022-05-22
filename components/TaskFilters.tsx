@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   clearCompletedButton: {
     color: `${colors.lightTheme.filtersTextColor}`,
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   filters: {
     flexGrow: 0,
@@ -181,8 +181,7 @@ const styles = StyleSheet.create({
   },
   filterText: {
     fontSize: 14,
-    lineHeight: 14,
-    fontWeight: '600',
+    fontWeight: 'bold',
     letterSpacing: 0.3,
     color: `${colors.lightTheme.filtersTextColor}`,
   },
