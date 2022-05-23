@@ -1,12 +1,14 @@
 import {
   ADD_TASK,
   REMOVE_TASK,
+  CHANGE_TASK,
   TOGGLE_TASK_STATE,
   SHOW_ALL_TASKS,
   SHOW_ACTIVE_TASKS,
   SHOW_COMPLETED_TASKS,
   CLEAR_COMPLETED_TASKS,
-  SWITCH_THEME
+  SWITCH_THEME,
+  SHOW_TASK
 } from './actionTypes';
 
 export const addTask = (text: string) => ({
@@ -20,6 +22,22 @@ export const removeTask = (id: string) => ({
   type: REMOVE_TASK,
   payload: {
     id
+  }
+});
+
+export const changeTask = (id: string, text: string) => ({
+  type: CHANGE_TASK,
+  payload: {
+    id,
+    text
+  }
+});
+
+export const showTask = (id: string, text: string) => ({
+  type: SHOW_TASK,
+  payload: {
+    id,
+    text
   }
 });
 
