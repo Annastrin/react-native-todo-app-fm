@@ -1,22 +1,25 @@
 import { View, Pressable, Text, StyleSheet } from 'react-native';
 import { memo } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 import useTheme from '../hooks/useTheme';
 import Checkbox from './Icons/Checkbox';
 import RemoveTask from './Icons/RemoveTask';
 import { colors } from '../style-guide';
-import { removeTask, toggleTaskState } from '../redux/actions';
+import { removeTask, showTask, toggleTaskState } from '../redux/actions';
 
 export interface TaskProps {
   taskName: string;
   taskId: string;
   completed: boolean;
   firstItem: boolean;
+  screenName: any;
 }
 
 export function Task(props: TaskProps) {
   const dispatch = useDispatch();
   const theme = useTheme();
+  const navigation = useNavigation();
 
   const handleRemove = () => {
     dispatch(removeTask(props.taskId));
@@ -24,6 +27,11 @@ export function Task(props: TaskProps) {
 
   const handleStateSwitch = () => {
     dispatch(toggleTaskState(props.taskId, !props.completed));
+  };
+
+  const handleChange = () => {
+    dispatch(showTask(props.taskId, props.taskName));
+    navigation.navigate(props.screenName);
   };
 
   return (
@@ -37,18 +45,22 @@ export function Task(props: TaskProps) {
       <Pressable onPress={handleStateSwitch} style={styles.checkbox}>
         <Checkbox checked={props.completed} />
       </Pressable>
-      <Text
-        style={[
-          styles.taskContent,
-          theme === 'darkTheme' && styles.taskContentDark,
-          props.completed && styles.taskCompleted,
-          theme === 'darkTheme' && props.completed && styles.taskCompletedDark,
-        ]}
-        numberOfLines={1}
-        ellipsizeMode='tail'
-      >
-        {props.taskName}
-      </Text>
+      <Pressable onPress={handleChange} style={styles.taskContent}>
+        <Text
+          style={[
+            styles.taskContentText,
+            theme === 'darkTheme' && styles.taskContentTextDark,
+            props.completed && styles.taskCompleted,
+            theme === 'darkTheme' &&
+              props.completed &&
+              styles.taskCompletedDark,
+          ]}
+          numberOfLines={1}
+          ellipsizeMode='tail'
+        >
+          {props.taskName}
+        </Text>
+      </Pressable>
       <Pressable onPress={handleRemove} style={styles.removeButton}>
         <RemoveTask />
       </Pressable>
@@ -95,24 +107,26 @@ const styles = StyleSheet.create({
     marginRight: 5,
     paddingHorizontal: 5,
   },
+  taskContent: {
+    flexGrow: 1,
+    flexShrink: 0,
+    flexBasis: 'auto',
+    width: 100,
+    height: 50,
+  },
+  taskContentText: {
+    lineHeight: 50,
+    color: `${colors.lightTheme.textColor}`,
+  },
+  taskContentTextDark: {
+    color: `${colors.darkTheme.textColor}`,
+  },
   taskCompleted: {
     textDecorationLine: 'line-through',
     color: `${colors.lightTheme.completedTaskTextColor}`,
   },
   taskCompletedDark: {
     color: `${colors.darkTheme.completedTaskTextColor}`,
-  },
-  taskContent: {
-    flexGrow: 1,
-    flexShrink: 0,
-    flexBasis: 'auto',
-    width: 100,
-    height: 26,
-    lineHeight: 26,
-    color: `${colors.lightTheme.textColor}`,
-  },
-  taskContentDark: {
-    color: `${colors.darkTheme.textColor}`,
   },
   removeButton: {
     flexGrow: 0,

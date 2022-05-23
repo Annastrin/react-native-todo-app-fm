@@ -25,6 +25,7 @@ export default function TaskList() {
       taskId={item.id}
       completed={item.completed}
       firstItem={index === 0}
+      screenName={'Task'}
     />
   );
 
