@@ -9,6 +9,7 @@ const paleteColors = {
   lightGrayishPurple: 'hsl(269, 17%, 71%)',
   darkGrayishBlue: 'hsl(236, 9%, 61%)',
   veryDarkGrayishBlue: 'hsl(235, 19%, 35%)',
+  blue: 'hsl(238, 63%, 64%)',
   // Dark Theme Colors
   veryDarkBlue: 'hsl(235, 21%, 11%)',
   veryDarkDesaturatedBlue: 'hsl(235, 24%, 19%)',
@@ -16,14 +17,15 @@ const paleteColors = {
   darkGrayishBlue2: 'hsl(234, 11%, 52%)',
   veryDarkGrayishBlue2: 'hsl(233, 14%, 35%)',
   veryDarkGrayishBlue3: 'hsl(237, 14%, 26%)',
-  black: 'hsl(0, 0%, 0%)'
+  black: 'hsl(0, 0%, 0%)',
+  darkPurple: 'hsl(270, 71%, 32%)'
 };
 
 export const colors = {
   //Primary colors
   logoColor: paleteColors.white,
   activeFilterColor: paleteColors.brightBlue,
-  caretColor: paleteColors.brightBlue,
+  screenHeader: paleteColors.white,
   //Light Theme colors
   lightTheme: {
     textColor: paleteColors.veryDarkGrayishBlue,
@@ -35,7 +37,8 @@ export const colors = {
     completedTaskTextColor: paleteColors.lightGrayishBlue,
     filtersTextColor: paleteColors.darkGrayishBlue,
     filtersBgColor: paleteColors.white,
-    addTaskFieldColor: paleteColors.darkGrayishBlue
+    addTaskFieldColor: paleteColors.darkGrayishBlue,
+    taskScreenBackground: paleteColors.blue,
   },
   //Dark Theme colors
   darkTheme: {
@@ -48,6 +51,7 @@ export const colors = {
     completedTaskTextColor: paleteColors.veryDarkGrayishBlue2,
     filtersTextColor: paleteColors.veryDarkGrayishBlue2,
     filtersBgColor: paleteColors.veryDarkDesaturatedBlue,
-    addTaskFieldColor: paleteColors.darkGrayishBlue2
+    addTaskFieldColor: paleteColors.darkGrayishBlue2,
+    taskScreenBackground: paleteColors.darkPurple
   }
 };
