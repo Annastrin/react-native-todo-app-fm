@@ -23,6 +23,7 @@ export default function ChangeTask() {
       style={[styles.input, theme === 'darkTheme' && styles.inputDark]}
       onChangeText={onChangeText}
       onSubmitEditing={handleSubmit}
+      onBlur={handleSubmit}
       blurOnSubmit={true}
       value={text}
       multiline={true}
