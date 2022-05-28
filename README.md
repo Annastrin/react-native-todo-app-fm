@@ -24,11 +24,15 @@ The project was created by means of (and for learning):
 
 In the project directory, you can run:
 
-### npm start
+### `npm install`
+
+Installs the required packages.
+
+### `npm start`
 
 Starts the development server and allows to choose a platform to run the app.
 
-### npm apk
+### `npm apk`
 
 Builds an android package to install the app directly on your device.
 https://docs.expo.dev/build-reference/apk/
