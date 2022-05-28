@@ -13,8 +13,12 @@ export default function Screen({ children }: ScreenProps) {
       style={[styles.screen, theme === 'darkTheme' && styles.screenDark]}
     >
       <StatusBar
-        barStyle='dark-content'
-        backgroundColor={colors.lightTheme.bgColor}
+        barStyle={theme === 'darkTheme' ? 'light-content' : 'dark-content'}
+        backgroundColor={
+          theme === 'darkTheme'
+            ? colors.darkTheme.bgColor
+            : colors.lightTheme.bgColor
+        }
       />
       {children}
     </SafeAreaView>
