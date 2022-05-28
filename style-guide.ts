@@ -2,6 +2,7 @@ const paleteColors = {
   // Primary Colors
   white: 'hsl(0, 0%, 100%)',
   brightBlue: 'hsl(220, 98%, 61%)',
+
   // Light Theme Colors
   veryLightGray: 'hsl(0, 0%, 96%)',
   veryLightGrayishBlue: 'hsl(0, 0%, 87%)',
@@ -10,6 +11,7 @@ const paleteColors = {
   darkGrayishBlue: 'hsl(236, 9%, 61%)',
   veryDarkGrayishBlue: 'hsl(235, 19%, 35%)',
   blue: 'hsl(238, 63%, 64%)',
+
   // Dark Theme Colors
   veryDarkBlue: 'hsl(235, 21%, 11%)',
   veryDarkDesaturatedBlue: 'hsl(235, 24%, 19%)',
@@ -26,6 +28,7 @@ export const colors = {
   logoColor: paleteColors.white,
   activeFilterColor: paleteColors.brightBlue,
   screenHeader: paleteColors.white,
+
   //Light Theme colors
   lightTheme: {
     textColor: paleteColors.veryDarkGrayishBlue,
@@ -40,6 +43,7 @@ export const colors = {
     addTaskFieldColor: paleteColors.darkGrayishBlue,
     taskScreenBackground: paleteColors.blue,
   },
+
   //Dark Theme colors
   darkTheme: {
     textColor: paleteColors.lightGrayishBlue2,

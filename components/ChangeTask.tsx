@@ -1,5 +1,5 @@
 import { TextInput, StyleSheet } from 'react-native';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { State } from '../redux/reducers';
 import useTheme from '../hooks/useTheme';
