@@ -176,8 +176,10 @@ const styles = StyleSheet.create({
     flex: -1,
     justifyContent: 'center',
     marginHorizontal: 5,
+    minWidth: 44,
     height: 60,
     paddingHorizontal: 5,
+    textAlign: 'center',
   },
   filterText: {
     fontSize: 14,

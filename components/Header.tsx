@@ -12,7 +12,10 @@ export function Header() {
   return (
     <View style={styles.header}>
       <Text style={styles.logo}>Todo</Text>
-      <Pressable onPress={() => dispatch(switchTheme())}>
+      <Pressable
+        onPress={() => dispatch(switchTheme())}
+        style={styles.themeSwitch}
+      >
         <ThemeSwitch theme={theme} />
       </Pressable>
     </View>
@@ -27,12 +30,21 @@ const styles = StyleSheet.create({
     alignContent: 'flex-start',
   },
   logo: {
-    fontSize: 26,
+    fontSize: 30,
     fontWeight: '700',
-    lineHeight: 26,
+    lineHeight: 30,
     letterSpacing: 10,
     textTransform: 'uppercase',
     color: `${colors.logoColor}`,
+  },
+  themeSwitch: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexShrink: 0,
+    flexGrow: 0,
+    minWidth: 44,
+    minHeight: 44,
   },
 });
 

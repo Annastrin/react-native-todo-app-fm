@@ -7,7 +7,7 @@ declare interface ThemeSwitchProps {
 
 export default function ThemeSwitch(props: ThemeSwitchProps) {
   return props.theme === 'darkTheme' ? (
-    <Svg width='28' height='28' viewBox='0 0 26 26'>
+    <Svg width='30' height='30' viewBox='0 0 26 26'>
       <Path
         fill='#FFF'
         fillRule='evenodd'
